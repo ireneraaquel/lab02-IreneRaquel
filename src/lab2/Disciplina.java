@@ -38,6 +38,7 @@ public class Disciplina {
         }
         return false;
     }
+
     @Override
     public String toString() {
         return this.nomeDisciplina + " " +
@@ -45,4 +46,5 @@ public class Disciplina {
                 calculaMedia() + " " +
                 "[" + this.notas[0] + ", " + this.notas[1] + ", " + this.notas[2] + ", " + this.notas[3] + "]";
     }
+    //eu meti um ArraystoString no meu kkkk
 }

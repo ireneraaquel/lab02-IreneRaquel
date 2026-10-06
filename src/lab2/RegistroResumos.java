@@ -1,47 +1,35 @@
 package lab2;
+//faça a classe Resumo, gatinha <3
 
 public class RegistroResumos {
 
-    private String temas[];
-    private String conteudos[];
     private int quantidade;
     private int proximoIndice;
-
+    private Resumo[] resumos;
 
     public RegistroResumos(int numeroDeResumos) {
-        this.temas = new String[numeroDeResumos];
-        this.conteudos = new String[numeroDeResumos];
-        this.quantidade = 0;
-        this.proximoIndice = 0;
+        this.resumos = new Resumo[numeroDeResumos];
     }
 
     public void adiciona(String tema, String conteudo) {
-        for (int i = 0; i < this.quantidade; i++) {
-            if (this.temas[i].equals(tema)) {
-                this.conteudos[i] = conteudo;
-                return;
-            }
+        resumos[proximoIndice] = new Resumo(tema, conteudo);
+        proximoIndice++;
+
+        if (proximoIndice == resumos.length){
+            proximoIndice = 0;
         }
 
-        this.temas[this.proximoIndice] = tema;
-        this.conteudos[this.proximoIndice] = conteudo;
-
-
-        this.proximoIndice = (this.proximoIndice + 1) % this.temas.length;
-
-
-        if (this.quantidade < this.temas.length) {
-            this.quantidade++;
+        if(quantidade < resumos.length){
+            quantidade ++;
         }
     }
-
     public int conta() {
         return this.quantidade;
     }
 
     public boolean temResumo(String tema) {
         for (int i = 0; i < this.quantidade; i++) {
-            if (this.temas[i].equals(tema)) {
+            if (resumos[i].getTema().equals(tema)) {
                 return true;
             }
         }
@@ -49,18 +37,18 @@ public class RegistroResumos {
     }
 
     public String[] pegaResumos() {
-        String[] resumos = new String[this.quantidade];
+        String[] resultado = new String[this.quantidade];
         for (int i = 0; i < this.quantidade; i++) {
-            resumos[i] = this.temas[i] + ": " + this.conteudos[i];
+            resultado[i] = resumos[i].toString();
         }
-        return resumos;
+        return resultado;
     }
 
 
     public String imprimeResumos() {
         String texto = "- " + this.quantidade + " quantidade resumo(s)\n ";
         for (int i = 0; i < this.quantidade; i++) {
-            texto += this.temas[i];
+            texto += resumos[i].getTema();
             if (i < this.quantidade - 1) {
                 texto += " | ";
             }
