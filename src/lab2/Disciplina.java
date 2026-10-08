@@ -13,7 +13,7 @@ public class Disciplina {
         this.notas = new double[4];
     }
 
-    //Metodo que adicionar valores ao atributo horasEstudpo.
+    //Metodo que adicionar valores ao atributo horasEstudo.
     public void cadastraHoras(int horas) {
         this.horasEstudo += horas;
     }

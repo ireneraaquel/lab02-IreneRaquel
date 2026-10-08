@@ -20,6 +20,10 @@ public class Resumo {
         return tema;
     }
 
+    public boolean estaNoConteudo(String palavra){
+        if(conteudo.contains(palavra)) return true;
+        return false;
+    }
     //O override da classe para utilizar no metodo de "pegaResumos" da classe RegistroResumos.
     @Override
     public String toString(){

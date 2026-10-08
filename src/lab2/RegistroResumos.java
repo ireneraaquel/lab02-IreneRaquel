@@ -1,4 +1,5 @@
 package lab2;
+
 public class RegistroResumos {
     // Na classe RegistroResumos temos 3 atributos:
     // Para que o codigo fique mais organizado foi criado a classe Resumo, como vimos na linha 6 que possui um atribudo que é o array de resumo com o nome de resumos.
@@ -13,6 +14,7 @@ public class RegistroResumos {
 
     //Metodo que adiciona o novo resumo dentro do array, passando como parametro o tema e conteudo.
     public void adiciona(String tema, String conteudo) {
+        //Instancia da classe resumo
         resumos[proximoIndice] = new Resumo(tema, conteudo);
         // Acrescenta +1 ao indice para que passe pra o outro espaço vazio.
         proximoIndice++;
@@ -26,6 +28,7 @@ public class RegistroResumos {
             quantidade ++;
         }
     }
+
     //Utiliza o atributo quantidade como contador, que foi encremetado na linhas: 25 a 27.
     public int conta() {
         return this.quantidade;
@@ -60,4 +63,21 @@ public class RegistroResumos {
         }
         return result;
     }
+
+    public String[] busca(String chaveDeBusca){
+        String[] resposta = new String[resumos.length];
+        int indiceAtual= 0;
+        for (int i = 0; i < quantidade; i++){
+            if(resumos[i].estaNoConteudo(chaveDeBusca)){
+                resposta[indiceAtual] = resumos[i].getTema();
+                indiceAtual++;
+            }
+            else{
+                resposta[indiceAtual] = "AAA";
+                indiceAtual ++;
+            }
+        }
+        return resposta;
+    }
+
 }
