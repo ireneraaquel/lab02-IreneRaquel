@@ -1,4 +1,3 @@
-package lab2;
 /**
  * Representação de um registro de Descanso, permitindo avaliar o
  * status de descanso com base na quantidade de horas e semanas.

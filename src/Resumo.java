@@ -1,5 +1,3 @@
-package lab2;
-
 /**
  * Representação do resumo contendo o tema e o conteudo.
  * Permitindo

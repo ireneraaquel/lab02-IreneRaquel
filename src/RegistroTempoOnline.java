@@ -1,4 +1,3 @@
-package lab2;
 /**
  * Representação do registro de tempo online dedicado a uma disciplina.
  * Permite controlar o tempo gasto, comparar com a meta esperada e verificar se a meta foi atingida.
