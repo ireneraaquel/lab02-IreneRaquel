@@ -1,27 +1,51 @@
 package lab2;
-public class RegistroTempoOnline {
-    //Nessa classe possui 3 atributos:
+/**
+ * Representação do registro de tempo online dedicado a uma disciplina.
+ * Permite controlar o tempo gasto, comparar com a meta esperada e verificar se a meta foi atingida.
+ *
+ * @author Irene Raquel
+ */
+public class    RegistroTempoOnline {
+
     private String nomeDisciplina;
     private int tempoOnlineEsperado = 120;
     private int tempo;
 
-    //Construtor que passa como parametro nome da disciplina.
+    /**
+     * Constrói um registro de tempo online para um disciplina,
+     * utilizando o tempo online esperado padrão de 120 minutos.
+     *
+     * @param nomeDisciplina o nome da disciplina
+     */
     public RegistroTempoOnline(String nomeDisciplina){
         this.nomeDisciplina = nomeDisciplina;
     }
 
-    //Construtor que passa como parametro nome da disciplina e tempo online esperado.
+    /**
+     * Constrói um registro de tempo online para uma disciplina,
+     * definindo um tempo online esperado personalizado.
+     *
+     * @param nomeDisciplina o nome da disciplina
+     * @param tempoOnlineEsperado o tempo online em minutos
+     */
     public RegistroTempoOnline(String nomeDisciplina, int tempoOnlineEsperado){
         this.nomeDisciplina = nomeDisciplina;
         this.tempoOnlineEsperado = tempoOnlineEsperado;
     }
 
-    //Metodo que adicionar valores ao atributo tempo.
+    /**
+     * Adiciona temmpo online ao total registrado para a disciplina.
+     *
+     * @param tempo a quantidade de tempo em minutos a ser adicionada
+     */
     public void adicionaTempoOnline(int tempo){
         this.tempo += tempo;
     }
 
-    //Metodo que analise se o tempo é igual ou superior ao tempo esperado, de acordo com as especificações do problema.
+    /**
+     * Verifica se o tempo online acumulado atingiu ou superou o tempo esperado.
+     * @return true se o tempo acumulado for maior ou igual ao esperado, caso contrário false
+     */
     public boolean atingiuMetaTempoOnline(){
         if ((tempo) >= tempoOnlineEsperado){
             return true;
@@ -29,7 +53,11 @@ public class RegistroTempoOnline {
         return false;
     }
 
-    //Override do toString para que a representação textual do objeto atenda as especificações.
+    /**
+     * Retorna a representação textual do registro de tempo online,
+     * no formato "nomeDisciplina tempo / tempoEsperado".
+     * @return a representação em String do objeto
+     */
     @Override
     public String toString(){
         return this.nomeDisciplina + " " + this.tempo + "/" + this.tempoOnlineEsperado;

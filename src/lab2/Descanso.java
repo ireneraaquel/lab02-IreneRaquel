@@ -1,23 +1,35 @@
 package lab2;
-
+/**
+ * Representação de um registro de Descanso, permitindo avaliar o
+ * status de descanso com base na quantidade de horas e semanas.
+ * @author Irene Raquel
+ */
 public class Descanso{
-    //Na classe descanso foi criado 2 atributos: valorHoras e valorSemanas que inciou-se com o valor 1, já que será realizado uma operação de divisão posteriomente.
-    private int valorHoras;
-    private int valorSemanas = 1;
+    private int numeroHoras;
+    private int numeroSemanas = 1;
 
-    //Metodo que define o valor do primeiro atributo.
-    public void defineHorasDescanso(int valorHoras){
-        this.valorHoras = valorHoras;
+    /**
+     * Define o valor do número de horas de descanso.
+     * @param numeroHoras a quantidade de horas de descanso a ser definida
+     */
+    public void defineHorasDescanso(int numeroHoras){
+        this.numeroHoras = numeroHoras;
     }
 
-    //Metodo que define o valor do segundo atributo.
-    public void defineNumeroSemanas(int valorSemanas){
-        this.valorSemanas = valorSemanas;
+    /**
+     * Define o número de semanas.
+     * @param numeroSemanas a quantidade de semanas a ser definida
+     */
+    public void defineNumeroSemanas(int numeroSemanas){
+        this.numeroSemanas = numeroSemanas;
     }
 
-    //Metodo que analisa o status do descanso de acordo com a condição do enuciado.
+    /**
+     * Analisa o status do descanso de acordo com a proporção entre horas e semanas.
+     * @return uma String contendo "descansado" se a média for maior ou igual a 26, ou "cansado" caso contrário.
+     */
     public String getStatusGeral(){
-        int descanso = valorHoras / valorSemanas;
+        int descanso = numeroHoras / numeroSemanas;
         if (descanso >= 26){
             return "descansado";
         } else{

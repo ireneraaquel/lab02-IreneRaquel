@@ -1,8 +1,4 @@
 package lab2;
-
-import java.lang.reflect.Array;
-import java.util.Arrays;
-
 public class Coisa {
     public static void main(String[] args) {
         registrarDescanso();
@@ -56,7 +52,9 @@ public class Coisa {
         meusResumos.adiciona("Classes", "Classes definem um tipo e a base de código para criação de objetos.");
         meusResumos.adiciona("Tipo", "Identifica a semântica (operações e significados) de um conjunto de dados.");
 
+
         String[] resumos = meusResumos.pegaResumos();
+
 
         for (int i = 0; i < meusResumos.conta(); i++) {
             System.out.println(resumos[i]);
@@ -68,9 +66,5 @@ public class Coisa {
         System.out.println(meusResumos.imprimeResumos());
         System.out.println(meusResumos.temResumo("Classes"));
         System.out.println(meusResumos.temResumo("Objetos"));
-
-        String amarelo = Arrays.toString(meusResumos.busca("definem"));
-        System.out.println(amarelo);
     }
-
 }
