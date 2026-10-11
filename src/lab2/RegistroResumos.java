@@ -1,40 +1,61 @@
 package lab2;
+import java.util.*;
+
+/**
+ * Representação de um registo de resumos, permitindo armazenar,
+ * contar, pesquisar e listar os resumos criados.
+ *
+ * @author Irene Raquel
+ */
 
 public class RegistroResumos {
-    // Na classe RegistroResumos temos 3 atributos:
-    // Para que o codigo fique mais organizado foi criado a classe Resumo, como vimos na linha 6 que possui um atribudo que é o array de resumo com o nome de resumos.
+
     private int quantidade;
     private int proximoIndice;
     private Resumo[] resumos;
 
-    //Construtor da classe, que começa com a quantidade maxima de resumos que podem ser registrados e cria um array com esse tamanho fixo.
+    /**
+     * Constrói um registo de resumos com um número máximo resumos
+     * @param numeroDeResumos o número máximo de resumos possíveis.
+     */
     public RegistroResumos(int numeroDeResumos) {
         this.resumos = new Resumo[numeroDeResumos];
     }
 
-    //Metodo que adiciona o novo resumo dentro do array, passando como parametro o tema e conteudo.
+    /**
+     * Adiciona um novo resumo ao registro, contendo tema e conteúdo.
+     *
+     * @param tema o tema do resumo
+     * @param conteudo o conteúdo do resumo
+     */
     public void adiciona(String tema, String conteudo) {
-        //Instancia da classe resumo
         resumos[proximoIndice] = new Resumo(tema, conteudo);
-        // Acrescenta +1 ao indice para que passe pra o outro espaço vazio.
         proximoIndice++;
 
-        //Confere se o array esta cheio para começa a registra novos resumos a espaços que estão guardando resumos antigos.
         if (proximoIndice == resumos.length){
             proximoIndice = 0;
         }
-        //Conta quantos resumos estão registrados no momento.
+
         if(quantidade < resumos.length){
             quantidade ++;
         }
     }
 
-    //Utiliza o atributo quantidade como contador, que foi encremetado na linhas: 25 a 27.
+    /**
+     * Conta a quantidade preenchida de resumos.
+     *
+     * @return a quantidade de resumos.
+     */
     public int conta() {
         return this.quantidade;
     }
 
-    //Metodo para verificar se tem o resumo que o tema foi passado como parametro.
+    /**
+     * Verifica se existe um resumo de acordo com o tema digitado.
+     *
+     * @param tema o tema a ser verificado se existe ou não
+     * @return true se o tema existir ou false se não
+     */
     public boolean temResumo(String tema) {
         for (int i = 0; i < this.quantidade; i++) {
             //Pelo indice do array chamo o getTema e verifico se ele é igual ao tema passado como parametro.
@@ -44,7 +65,11 @@ public class RegistroResumos {
         }
         return false;
     }
-    //Metodo que retorna um array com a representacao textual de todos os resumos.
+
+    /**
+     * Retorna a representação textual dos resumos guardados, de acordo com o que foi definido no toString.
+     * @return um array de Strings com os resumos formatados
+     */
     public String[] pegaResumos() {
         String[] resultado = new String[this.quantidade];
         for (int i = 0; i < this.quantidade; i++) {
@@ -52,7 +77,13 @@ public class RegistroResumos {
         }
         return resultado;
     }
-    // Metodo que exibe a quantidade de resumos e os temas.
+
+    /**
+     * Imprime a quantidade de resumos cadastrados e os temmas.
+     *
+     * @return uma String formatada com o tema dos resumos e as quantidades.
+     */
+
     public String imprimeResumos() {
         String result = "- " + this.quantidade + " resumo(s) cadastrado(s)\n ";
         for (int i = 0; i < this.quantidade; i++) {
@@ -64,20 +95,29 @@ public class RegistroResumos {
         return result;
     }
 
+    /**
+     * Procura no conteudo de um resumo a palavra chave digitada.
+     *
+     * @param chaveDeBusca a palavra que esta procurando no conteudo
+     * @return retorna o tema do resumo onde a palavra existe no conteudo
+     */
     public String[] busca(String chaveDeBusca){
-        String[] resposta = new String[resumos.length];
+        String[] resposta = new String[quantidade];
         int indiceAtual= 0;
+        int contador = 0;
         for (int i = 0; i < quantidade; i++){
             if(resumos[i].estaNoConteudo(chaveDeBusca)){
                 resposta[indiceAtual] = resumos[i].getTema();
                 indiceAtual++;
             }
-            else{
-                resposta[indiceAtual] = "AAA";
-                indiceAtual ++;
-            }
         }
-        return resposta;
+
+        String[] resultadoFinal = new String[indiceAtual];
+        for (int i = 0; i < indiceAtual; i++){
+            resultadoFinal[i] = resposta[i];
+        }
+        Arrays.sort(resultadoFinal);
+        return resultadoFinal;
     }
 
 }
